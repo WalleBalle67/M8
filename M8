@@ -1,8 +1,19 @@
+from Colors import bcolors
+import os
+os.system('cls')
+
 cars = [
     {"brand": "DeTomaso", "model": "Pantera GT5", "year": 1985},
     {"brand": "Volvo", "model": "240 Turbo", "year": 1986},
     {"brand": "BMW", "model": "X5", "year": 2020}
 ]
+
+def show_menu():
+    print(bcolors.BLUE + "1. Show Cars" + bcolors.DEFAULT)
+    print(bcolors.GREEN + "2. Add Car" + bcolors.DEFAULT)
+    print(bcolors.RED + "3. Remove Car" + bcolors.DEFAULT)
+    print(bcolors.PURPLE + "4. Update Car" + bcolors.DEFAULT)
+    print(bcolors.YELLOW + "5. Quit" + bcolors.DEFAULT)
 
 def show():
     if len(cars) == 0:
