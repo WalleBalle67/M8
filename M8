@@ -1,0 +1,84 @@
+cars = [
+    {"brand": "DeTomaso", "model": "Pantera GT5", "year": 1985},
+    {"brand": "Volvo", "model": "240 Turbo", "year": 1986},
+    {"brand": "BMW", "model": "X5", "year": 2020}
+]
+
+def show():
+    if len(cars) == 0:
+        print("No cars.")
+    else:
+        i = 1
+        for car in cars:
+            print(str(i) + ". " + car["brand"] + " " + car["model"] + " (" + str(car["year"]) + ")")
+            i = i + 1
+
+def add():
+    brand = input("Brand: ")
+    if brand == "":
+        brand = "Unknown"
+    model = input("Model: ")
+    if model == "":
+        model = "Unknown"
+    year = input("Year: ")
+    if year == "":
+        year = 0
+    else:
+        try:
+            year = int(year)
+        except:
+            year = 0
+    cars.append({"brand": brand, "model": model, "year": year})
+    print("Added.")
+
+def remove():
+    show()
+    number = input("Number to remove: ")
+    try:
+        number = int(number)
+        if number >= 1 and number <= len(cars):
+            cars.pop(number - 1)
+            print("Removed.")
+        else:
+            print("Invalid number.")
+    except:
+        print("Invalid input.")
+
+def update():
+    show()
+    number = input("Number to update: ")
+    try:
+        number = int(number)
+        if number >= 1 and number <= len(cars):
+            car = cars[number - 1]
+            brand = input("Brand [" + car["brand"] + "]: ")
+            if brand != "":
+                car["brand"] = brand
+            model = input("Model [" + car["model"] + "]: ")
+            if model != "":
+                car["model"] = model
+            year = input("Year [" + str(car["year"]) + "]: ")
+            if year != "":
+                try:
+                    car["year"] = int(year)
+                except:
+                    print("Invalid year, keeping old value.")
+            print("Updated.")
+        else:
+            print("Invalid number.")
+    except:
+        print("Invalid input.")
+
+while True:
+    print("\n1) Show  2) Add  3) Remove  4) Update  5) Quit")
+    choice = input("Choice: ")
+    if choice == "1":
+        show()
+    elif choice == "2":
+        add()
+    elif choice == "3":
+        remove()
+    elif choice == "4":
+        update()
+    elif choice == "5":
+        break
